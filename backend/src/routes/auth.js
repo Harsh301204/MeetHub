@@ -1,13 +1,12 @@
 import express from 'express'
-import { signUp , login , logout } from '../controllers/authControllers.js';
+import { signUp , login , logout , onBoard } from '../controllers/authControllers.js';
 
 const router = express.Router();
 
-router.get('/signup' , signUp)
-
-router.get('/login' , login)
-
-router.get('/logout' , logout)
+router.post('/signup' , signUp)
+router.post('/login' , login)
+router.post('/logout' , logout)
+router.post('/onboard' , onBoard)
 
 
 

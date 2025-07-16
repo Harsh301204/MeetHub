@@ -9,6 +9,10 @@ router.post('/login' , login)
 router.post('/logout' , logout)
 router.post('/onboard' , protectedRoute , onBoard)
 
+router.get('/me' , protectedRoute , (req , res) => {
+    return res.status(201).json({success : true , user : req.user})
+}) 
+
 
 
 export default router

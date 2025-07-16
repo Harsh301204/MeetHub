@@ -1,6 +1,7 @@
 import express from "express"
 import { PORT } from './config/serverConfig.js'
 import authRoutes from './routes/auth.js'
+import chatRoutes from './routes/chat.js'
 import userRoutes from './routes/user.js'
 import {connectDb} from "./lib/db.js";
 import cookieParser from 'cookie-parser'

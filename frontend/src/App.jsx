@@ -24,7 +24,6 @@ const App = () => {
 
   return (
     <div className='h-screen' data-theme = "night">
-      <button onClick={() => toast.success("HEllo world")}>Create a Toast</button>
       <Routes>
         <Route path='/' element={authUser ? <HomePage/> : <Navigate to={'/login'}/>} />
         <Route path='/signup' element={!authUser ? <SignUpPage/> : <Navigate to={'/'}/>} />
@@ -35,7 +34,7 @@ const App = () => {
         <Route path='/onboard' element={authUser ? <OnBoardingPage/> : <Navigate to={'/login'}/>} />
       </Routes>
 
-      <Toaster/>
+      
     </div>
   )
 }

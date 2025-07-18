@@ -14,6 +14,7 @@ import { axiosInstance } from './lib/axios.js'
 import PageLoader from './components/PageLoader.jsx'
 import { getAuthUser } from './lib/api.js'
 import useAuthUser from './hooks/useAuthUser.js'
+import Layout from './components/Layout.jsx'
 
 const App = () => {
 
@@ -27,7 +28,14 @@ const App = () => {
   return (
     <div className='h-screen' data-theme = "night">
       <Routes>
-        <Route path='/' element={isAuthenticated && isOnBoarded ? <HomePage/> : (<Navigate to={!isAuthenticated ? "/login" : "/onboard"}/>)} />
+        <Route path='/' element={isAuthenticated && isOnBoarded ? 
+        <Layout showSideBar={false}>
+          <HomePage/> 
+        </Layout>
+        
+        : (<Navigate to={!isAuthenticated ? "/login" : "/onboard"}/>)} />
+
+
         <Route path='/signup' element={!isAuthenticated ? <SignUpPage/> : <Navigate to={isOnBoarded ? "/" : "/onboard"}/>} />
         <Route path='/login' element={!isAuthenticated ? <LoginPage/> : <Navigate to={isOnBoarded ? "/" : "/onboard"}/>} />
         <Route path='/notifications' element={isAuthenticated ? <NotificationsPage/> : <Navigate to={'/login'}/>} />

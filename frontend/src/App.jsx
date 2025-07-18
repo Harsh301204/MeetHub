@@ -28,8 +28,8 @@ const App = () => {
     <div className='h-screen' data-theme = "night">
       <Routes>
         <Route path='/' element={isAuthenticated && isOnBoarded ? <HomePage/> : (<Navigate to={!isAuthenticated ? "/login" : "/onboard"}/>)} />
-        <Route path='/signup' element={!isAuthenticated ? <SignUpPage/> : <Navigate to={'/'}/>} />
-        <Route path='/login' element={!isAuthenticated ? <LoginPage/> : <Navigate to={'/'}/>} />
+        <Route path='/signup' element={!isAuthenticated ? <SignUpPage/> : <Navigate to={isOnBoarded ? "/" : "/onboard"}/>} />
+        <Route path='/login' element={!isAuthenticated ? <LoginPage/> : <Navigate to={isOnBoarded ? "/" : "/onboard"}/>} />
         <Route path='/notifications' element={isAuthenticated ? <NotificationsPage/> : <Navigate to={'/login'}/>} />
         <Route path='/call' element={isAuthenticated ? <CallPage/> : <Navigate to={'/login'}/>} />
         <Route path='/chat' element={isAuthenticated ? <ChatPage/> : <Navigate to={'/login'}/>} />

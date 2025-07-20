@@ -6,13 +6,15 @@ export async function getRecommendedUsers(req , res){
         const currentUserId = req.user.id;
         // const currentUser = await User.findById(currentUserId);
         const currentUser = req.user;
-
+        console.log("currentUser.friends ," , currentUser.friends);
+        console.log("currentUserID" , currentUserId)
         const recommended = await User.find({
             $and : [
                 {_id : {$ne : currentUserId}}, // this will exclude the current user
                 {_id : {$nin : currentUser.friends}}, // this will exclude frnds
-                {isOnboard: true}
-            ]
+                {isOnBoard: true}
+            ],
+           
         })
 
         return res.status(200).json(recommended);
